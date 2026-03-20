@@ -1,0 +1,16 @@
+# IDEs and Editors
+.vs/
+.vscode/
+.lovable/
+.DS_Store
+*.slnx
+*.vsidx
+
+# Dependencies
+node_modules/
+dist/
+build/
+
+# Local env files
+.env
+.env.local

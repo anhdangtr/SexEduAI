@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* SafeSpace Health Theme - Warm Teal */
+    --background: 160 20% 97%;
+    --foreground: 170 30% 12%;
+
+    --card: 160 15% 99%;
+    --card-foreground: 170 30% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 170 30% 12%;
+
+    --primary: 172 50% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 168 30% 92%;
+    --secondary-foreground: 172 40% 20%;
+
+    --muted: 160 15% 93%;
+    --muted-foreground: 170 10% 45%;
+
+    --accent: 172 45% 88%;
+    --accent-foreground: 172 50% 20%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 168 20% 88%;
+    --input: 168 20% 88%;
+    --ring: 172 50% 36%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 160 18% 96%;
+    --sidebar-foreground: 170 20% 25%;
+    --sidebar-primary: 172 50% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 168 25% 92%;
+    --sidebar-accent-foreground: 172 40% 20%;
+    --sidebar-border: 168 18% 90%;
+    /* Slightly darker sidebar text for better contrast */
+    --sidebar-foreground: 170 20% 18%;
+    --sidebar-ring: 172 50% 36%;
+
+    /* Custom tokens */
+    --chat-user: 172 45% 92%;
+    --chat-ai: 0 0% 100%;
+    --chat-user-foreground: 172 40% 18%;
+    --chat-ai-foreground: 170 25% 15%;
+    --surface-warm: 30 30% 96%;
+    --mode-indicator: 172 50% 36%;
+    --switch-track: 172 35% 75%;
+  }
+
+  .disguise-mode {
+    /* EduSolve Math Theme - Deep Navy */
+    --background: 222 25% 10%;
+    --foreground: 220 15% 90%;
+
+    --card: 222 22% 14%;
+    --card-foreground: 220 15% 90%;
+
+    --popover: 222 22% 14%;
+    --popover-foreground: 220 15% 90%;
+
+    --primary: 215 60% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 18% 20%;
+    --secondary-foreground: 220 15% 85%;
+
+    --muted: 222 15% 18%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 215 40% 25%;
+    --accent-foreground: 215 50% 80%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 15% 22%;
+    --input: 222 15% 22%;
+    --ring: 215 60% 52%;
+
+    --sidebar-background: 222 28% 8%;
+    --sidebar-foreground: 220 12% 75%;
+    --sidebar-primary: 215 60% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 18% 16%;
+    --sidebar-accent-foreground: 215 50% 80%;
+    --sidebar-border: 222 18% 18%;
+    /* Brighter sidebar foreground for dark/disguise mode */
+    --sidebar-foreground: 220 12% 88%;
+    --sidebar-ring: 215 60% 52%;
+
+    --chat-user: 215 40% 22%;
+    --chat-ai: 222 22% 16%;
+    --chat-user-foreground: 215 50% 85%;
+    --chat-ai-foreground: 220 15% 88%;
+    --surface-warm: 222 20% 12%;
+    --mode-indicator: 215 60% 52%;
+    --switch-track: 215 40% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    /* Slightly larger base for better readability */
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: light dark;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .mode-transition {
+    transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease;
+  }
+
+  .blur-switch {
+    animation: blurSwitch 400ms ease;
+  }
+
+  @keyframes blurSwitch {
+    0% { filter: blur(0px); opacity: 1; }
+    40% { filter: blur(8px); opacity: 0.6; }
+    60% { filter: blur(8px); opacity: 0.6; }
+    100% { filter: blur(0px); opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in {
+    animation: slideIn 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.35);
+    border-radius: 999px;
+  }
+}
